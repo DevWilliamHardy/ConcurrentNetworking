@@ -12,13 +12,14 @@ namespace Concurrency
     {
         public static void Main()
         {
-            Threadinfo info1 = new Threadinfo(100, 100);
-            Threadinfo info2 = new Threadinfo(0, 200);
+            Threadinfo info1 = new Threadinfo(101, 100);
+            Threadinfo info2 = new Threadinfo(100, 100);
 
-            Thread thread1 = new Thread(new ThreadStart(info1.DoWork));
-            Thread thread2 = new Thread(new ThreadStart(info2.DoWork));
-            thread1.Start();
-            thread2.Start();
+            Thread countDown = new Thread(new ThreadStart(info2.Decrease));
+            Thread countUp = new Thread(new ThreadStart(info1.Increase));
+
+            countDown.Start();
+            countUp.Start();
         }
     }
 }
