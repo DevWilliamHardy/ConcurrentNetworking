@@ -6,21 +6,7 @@ public class ThreadingStuff
     public static void Sort(int[] SortNumbers, int count)
     {
 
-        int temp, smallest;
-        for(int i = 0; i < 10; i++)
-        {
-            smallest = i;
-            for(int j = i + 1; j < 10; j++)
-            {
-                if (SortNumbers[j] < SortNumbers[smallest])
-                {
-                    smallest = j;
-                }
-                temp = SortNumbers[smallest];
-                SortNumbers[smallest] = SortNumbers[i];
-                SortNumbers[i] = temp;
-            }
-        }
+        Array.Sort(SortNumbers);
         Console.WriteLine("Sorted: " + count);
     }
 }
@@ -62,12 +48,17 @@ public class SortArrays
         Toscreen(Numbers3);
 
         Thread Thread1 = new Thread(new ThreadStart(() => ThreadingStuff.Sort(Numbers1, 1)));
-        Thread Thread2 = new Thread(new ThreadStart(() => ThreadingStuff.Sort(Numbers2, 3)));
+        Thread Thread2 = new Thread(new ThreadStart(() => ThreadingStuff.Sort(Numbers2, 2)));
         Thread Thread3 = new Thread(new ThreadStart(() => ThreadingStuff.Sort(Numbers3, 3)));
 
         Thread1.Start();
         Thread2.Start();
         Thread3.Start();
+
+        Thread1.Join();
+        Thread2.Join();
+        Thread3.Join();
+
 
         Console.WriteLine("Sorted Lists Are: ");
         Console.WriteLine();
