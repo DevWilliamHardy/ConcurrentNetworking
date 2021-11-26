@@ -12,24 +12,117 @@ namespace Concurrency
     {
         public static void Main()
         {
-            Threadinfo info1 = new Threadinfo(1);
-            Threadinfo info2 = new Threadinfo(2);
-            Threadinfo info3 = new Threadinfo(3);
-            Threadinfo info4 = new Threadinfo(4);
-            Threadinfo info5 = new Threadinfo(5);
-            
+            int threadCount = 0;
 
-            Thread thread1 = new Thread(new ThreadStart(info1.PrintInt));
-            Thread thread2 = new Thread(new ThreadStart(info2.PrintInt));
-            Thread thread3 = new Thread(new ThreadStart(info3.PrintInt));
-            Thread thread4 = new Thread(new ThreadStart(info4.PrintInt));
-            Thread thread5 = new Thread(new ThreadStart(info5.PrintInt));
+            Thread t1 = new Thread(() =>
+            {
+                int number = 0;
+                while (number < 9)
+                {
+                    Thread.Sleep(100);
 
-            thread1.Start();
-            thread2.Start();
-            thread3.Start();
-            thread4.Start();
-            thread5.Start();
+                    number++;
+                    Console.WriteLine(number);
+                }
+                threadCount += 1;
+
+                Thread t2 = new Thread(() =>
+                {
+                    int number = 9;
+                    while (number < 19)
+                    {
+                        Thread.Sleep(100);
+
+                        number++;
+                        Console.WriteLine(number);
+                    }
+                    threadCount += 1;
+                    Thread t4 = new Thread(() =>
+                    {
+                        int number = 19;
+                        while (number < 29)
+                        {
+                            Thread.Sleep(100);
+
+                            number++;
+                            Console.WriteLine(number);
+                        }
+                        threadCount += 1;
+                    });
+                    t4.Start();
+                    Thread t5 = new Thread(() =>
+                    {
+                        int number = 19;
+                        while (number < 29)
+                        {
+                            Thread.Sleep(100);
+
+                            number++;
+                            Console.WriteLine(number);
+                        }
+                        threadCount += 1;
+                    });
+                    t5.Start();
+                    t4.Join();
+                    t5.Join();
+                });
+                t2.Start();
+                Thread t3 = new Thread(() =>
+                {
+                    int number = 9;
+                    while (number < 19)
+                    {
+                        Thread.Sleep(100);
+
+                        number++;
+                        Console.WriteLine(number);
+                    }
+                    threadCount += 1;
+                    Thread t6 = new Thread(() =>
+                    {
+                        int number = 19;
+                        while (number < 29)
+                        {
+                            Thread.Sleep(100);
+
+                            number++;
+                            Console.WriteLine(number);
+                        }
+                        threadCount += 1;
+                    });
+                    t6.Start();
+                    Thread t7 = new Thread(() =>
+                    {
+                        int number = 19;
+                        while (number < 29)
+                        {
+                            Thread.Sleep(100);
+
+                            number++;
+                            Console.WriteLine(number);
+                        }
+                        threadCount += 1;
+                    });
+                    t7.Start();
+                    t6.Join();
+                    t7.Join();
+                });
+                t3.Start();
+                t2.Join();
+                t3.Join();
+            });
+
+
+
+
+            t1.Start();
+
+            t1.Join();
+
+
+
+            Console.WriteLine("Threads Used {0}", (threadCount));
+
         }
     }
 }
