@@ -8,18 +8,89 @@ using Threading;
 
 namespace Concurrency
 {
-    class ThreadApp
+    public class Buffer
+    {
+        private int data;
+        private bool empty = true;
+        public void Read(ref int data)
+        {
+            lock (this)
+            {
+                if (empty)
+                    Monitor.Wait(this);
+                empty = true;
+                data = this.data;
+                Console.WriteLine("            " + data + " read");
+                Monitor.Pulse(this);
+            }
+        }
+
+        public void Write(int data)
+        {
+            lock (this)
+            {
+                if (!empty)
+                    Monitor.Wait(this);
+                empty = false;
+                this.data = data;
+                Console.WriteLine(data + " write");
+                Monitor.Pulse(this);
+            }
+        }
+    }
+    public class Producer
+    {
+        private Buffer buffer;
+        private Random random = new Random();
+        public Producer(Buffer buffer)
+        {
+            this.buffer = buffer;
+        }
+
+        public void Production()
+        {
+            for(int i = 1; i<= 10; i++)
+            {
+                Thread.Sleep(random.Next(501));
+                buffer.Write(i);
+            }
+        }
+    }
+    public class Consumer
+    {
+        private Buffer buffer;
+        private Random random = new Random();
+
+        public Consumer(Buffer buffer)
+        {
+            this.buffer = buffer;
+        }
+
+        public void Consumption()
+        {
+            int data = -1;
+            
+            for (int i = 1; i <= 10; i++)
+            {
+                Thread.Sleep(random.Next(501));
+                buffer.Read(ref data);
+                data = -1;
+            }
+        }
+    }
+    public class ThreadApp
     {
         public static void Main()
         {
-            Threadinfo info1 = new Threadinfo(101, 100);
-            Threadinfo info2 = new Threadinfo(100, 100);
+            Buffer buff = new Buffer();
+            Producer prod = new Producer(buff);
+            Consumer con = new Consumer(buff);
 
-            Thread countDown = new Thread(new ThreadStart(info2.Decrease));
-            Thread countUp = new Thread(new ThreadStart(info1.Increase));
+            Thread ProducerThread = new Thread(new ThreadStart(prod.Production));
+            Thread ConsumerThread = new Thread(new ThreadStart(con.Consumption));
 
-            countDown.Start();
-            countUp.Start();
+            ProducerThread.Start();
+            ConsumerThread.Start();
         }
     }
 }
