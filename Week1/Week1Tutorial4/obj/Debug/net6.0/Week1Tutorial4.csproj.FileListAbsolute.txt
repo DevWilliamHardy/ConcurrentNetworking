@@ -1,0 +1,15 @@
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\bin\Debug\net6.0\Week1Tutorial4.exe
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\bin\Debug\net6.0\Week1Tutorial4.deps.json
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\bin\Debug\net6.0\Week1Tutorial4.runtimeconfig.json
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\bin\Debug\net6.0\Week1Tutorial4.dll
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\bin\Debug\net6.0\Week1Tutorial4.pdb
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\Week1Tutorial4.csproj.AssemblyReference.cache
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\Week1Tutorial4.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\Week1Tutorial4.AssemblyInfoInputs.cache
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\Week1Tutorial4.AssemblyInfo.cs
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\Week1Tutorial4.csproj.CoreCompileInputs.cache
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\Week1Tutorial4.dll
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\refint\Week1Tutorial4.dll
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\Week1Tutorial4.pdb
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\Week1Tutorial4.genruntimeconfig.cache
+C:\Users\William Hardy\Documents\GitHub\ConcurrentNetworking\Week1\Week1Tutorial4\obj\Debug\net6.0\ref\Week1Tutorial4.dll
